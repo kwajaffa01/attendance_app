@@ -117,6 +117,7 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen> {
   String scannedCode = "No code scanned";
+  List<String> attendanceList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -147,6 +148,7 @@ class _ScanScreenState extends State<ScanScreen> {
 
                         scannedCode =
                             "Attendance marked for $name (ID: $id)";
+                            attendanceList.add("$name (ID: $id)");
                       } else {
                         scannedCode = "Invalid QR code";
                       }
@@ -156,13 +158,28 @@ class _ScanScreenState extends State<ScanScreen> {
               },
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              scannedCode,
-              style: const TextStyle(fontSize: 18),
-            ),
-          ),
+         Container(
+  padding: const EdgeInsets.all(16),
+  child: Column(
+    children: [
+      Text(
+        scannedCode,
+        style: const TextStyle(fontSize: 18),
+      ),
+      const SizedBox(height: 10),
+
+      const Text(
+        "Attendance List",
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+
+      ...attendanceList.map((student) => Text(student)).toList(),
+    ],
+  ),
+),
         ],
       ),
     );
