@@ -118,7 +118,7 @@ const SizedBox(height: 10),
     style: TextStyle(fontSize: 16),
   ),
 
- const SizedBox(height: 20),
+ const SizedBox(height: 15),
 
 ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -141,21 +141,40 @@ ElevatedButton(
     );
   }
 }
-
 class ScanScreen extends StatelessWidget {
   const ScanScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    appBar: AppBar(
-  automaticallyImplyLeading: true,
-  title: const Text('Scan Attendance'),
-),
-      body: const Center(
-        child: Text(
-          'QR Scanner will be here',
-          style: TextStyle(fontSize: 20),
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        title: const Text('Scan Attendance'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.qr_code_scanner,
+              size: 120,
+              color: Colors.green,
+            ),
+
+            const SizedBox(height: 20),
+
+            const Text(
+              'Ready to Scan',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+
+            const SizedBox(height: 10),
+
+            const Text(
+              'Point your camera at QR code',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
         ),
       ),
     );
