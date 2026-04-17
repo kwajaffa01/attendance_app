@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+
 // ==========================
 // MAIN APP ENTRY
 // ==========================
@@ -61,6 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 15),
+
+            // BUTTON 1: SCAN
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -75,6 +78,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('Scan Attendance'),
+            ),
+
+            const SizedBox(height: 10),
+
+            // BUTTON 2: SHOW QR
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const StudentScreen(),
+                  ),
+                );
+              },
+              child: const Text('Show My QR'),
             ),
           ],
         ),
