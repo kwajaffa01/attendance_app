@@ -117,7 +117,7 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen> {
   String scannedCode = "No code scanned";
-A
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +135,21 @@ A
                   final String? code = barcode.rawValue;
                   if (code != null) {
                     setState(() {
-                      scannedCode = "Attendance marked for $code";
+                      if (code.contains('|')) {
+                        final parts = code.split('|');
+
+                        final name = parts[0]
+                            .replaceAll('Name:', '')
+                            .trim();
+                        final id = parts[1]
+                            .replaceAll('ID:', '')
+                            .trim();
+
+                        scannedCode =
+                            "Attendance marked for $name (ID: $id)";
+                      } else {
+                        scannedCode = "Invalid QR code";
+                      }
                     });
                   }
                 }
@@ -177,7 +191,7 @@ class StudentScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             QrImageView(
-              data: 'student_12345',
+              data: 'Name: John Doe | ID: 12345',
               size: 200,
             ),
           ],
