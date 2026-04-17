@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-
+import 'package:qr_flutter/qr_flutter.dart';
 // ==========================
 // MAIN APP ENTRY
 // ==========================
@@ -107,6 +107,38 @@ class ScanScreen extends StatelessWidget {
             }
           }
         },
+      ),
+    );
+  }
+}
+
+// ==========================
+// STUDENT SCREEN (QR GENERATOR)
+// ==========================
+class StudentScreen extends StatelessWidget {
+  const StudentScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My QR Code'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Show this to lecturer',
+              style: TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 20),
+            QrImageView(
+              data: 'student_12345',
+              size: 200,
+            ),
+          ],
+        ),
       ),
     );
   }
