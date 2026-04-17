@@ -114,15 +114,42 @@ class ScanScreen extends StatefulWidget {
   @override
   State<ScanScreen> createState() => _ScanScreenState();
 }
-  const ScanScreen({super.key});
 
- class ScanScreen extends StatefulWidget {
-  const ScanScreen({super.key});
+class _ScanScreenState extends State<ScanScreen> {
+  String scannedCode = "No code scanned";
 
   @override
-  State<ScanScreen> createState() => _ScanScreenState();
-}
-        },
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Scan Attendance'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: MobileScanner(
+              onDetect: (barcodeCapture) {
+                final List<Barcode> barcodes = barcodeCapture.barcodes;
+
+                for (final barcode in barcodes) {
+                  final String? code = barcode.rawValue;
+                  if (code != null) {
+                    setState(() {
+                      scannedCode = code;
+                    });
+                  }
+                }
+              },
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: Text(
+              scannedCode,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
+        ],
       ),
     );
   }
