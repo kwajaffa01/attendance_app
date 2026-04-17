@@ -117,7 +117,7 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanScreenState extends State<ScanScreen> {
   String scannedCode = "No code scanned";
-
+A
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +135,7 @@ class _ScanScreenState extends State<ScanScreen> {
                   final String? code = barcode.rawValue;
                   if (code != null) {
                     setState(() {
-                      scannedCode = code;
+                      scannedCode = "Attendance marked for $code";
                     });
                   }
                 }
