@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+// ==========================
+// MAIN APP ENTRY
+// ==========================
 void main() {
   runApp(const MyApp());
 }
 
+// ==========================
+// ROOT APP
+// ==========================
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,6 +26,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ==========================
+// HOME SCREEN (LECTURER)
+// ==========================
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -74,6 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+// ==========================
+// SCAN SCREEN (QR SCANNER)
+// ==========================
 class ScanScreen extends StatelessWidget {
   const ScanScreen({super.key});
 
