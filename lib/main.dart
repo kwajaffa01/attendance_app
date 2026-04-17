@@ -170,10 +170,18 @@ class _ScanScreenState extends State<ScanScreen> {
 }
 
 // ==========================
-// STUDENT SCREEN (QR GENERATOR)
+// STUDENT SCREEN (QR GENERATOR - DYNAMIC)
 // ==========================
-class StudentScreen extends StatelessWidget {
+class StudentScreen extends StatefulWidget {
   const StudentScreen({super.key});
+
+  @override
+  State<StudentScreen> createState() => _StudentScreenState();
+}
+
+class _StudentScreenState extends State<StudentScreen> {
+  String name = "";
+  String id = "";
 
   @override
   Widget build(BuildContext context) {
@@ -186,12 +194,46 @@ class StudentScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Show this to lecturer',
+              'Enter your details',
               style: TextStyle(fontSize: 18),
             ),
+
+            const SizedBox(height: 10),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Name',
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    name = value;
+                  });
+                },
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'ID',
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    id = value;
+                  });
+                },
+              ),
+            ),
+
             const SizedBox(height: 20),
+
             QrImageView(
-              data: 'Name: John Doe | ID: 12345',
+              data: "Name: $name | ID: $id",
               size: 200,
             ),
           ],
