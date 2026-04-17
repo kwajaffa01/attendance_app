@@ -231,9 +231,21 @@ class _StudentScreenState extends State<StudentScreen> {
             ),
 
             const SizedBox(height: 20),
-
+Text(
+  (name.isEmpty || id.isEmpty)
+      ? "Please enter Name and ID"
+      : "QR ready for scanning",
+  style: TextStyle(
+    color: (name.isEmpty || id.isEmpty)
+        ? Colors.red
+        : Colors.green,
+    fontWeight: FontWeight.bold,
+  ),
+),
             QrImageView(
-              data: "Name: $name | ID: $id",
+              data: (name.isNotEmpty && id.isNotEmpty)
+    ? "Name: $name | ID: $id"
+    : "Enter details",
               size: 200,
             ),
           ],
