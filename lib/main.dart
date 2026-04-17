@@ -108,26 +108,20 @@ class _MyHomePageState extends State<MyHomePage> {
 // ==========================
 // SCAN SCREEN (QR SCANNER)
 // ==========================
-class ScanScreen extends StatelessWidget {
+class ScanScreen extends StatefulWidget {
   const ScanScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        title: const Text('Scan Attendance'),
-      ),
-      body: MobileScanner(
-        onDetect: (barcodeCapture) {
-          final List<Barcode> barcodes = barcodeCapture.barcodes;
+  State<ScanScreen> createState() => _ScanScreenState();
+}
+  const ScanScreen({super.key});
 
-          for (final barcode in barcodes) {
-            final String? code = barcode.rawValue;
-            if (code != null) {
-              print('Scanned: $code');
-            }
-          }
+ class ScanScreen extends StatefulWidget {
+  const ScanScreen({super.key});
+
+  @override
+  State<ScanScreen> createState() => _ScanScreenState();
+}
         },
       ),
     );
